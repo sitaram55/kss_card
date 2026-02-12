@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kiss Day Special 💋</title>
+
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Segoe UI', sans-serif;
+            background: radial-gradient(circle at bottom, #1a001f, #000814);
+            color: white;
+        }
+
+        /* ⭐ Stars */
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 2s infinite alternate;
+        }
+
+        @keyframes twinkle {
+            from {
+                opacity: 0.3;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* 🌠 Shooting Star */
+        .shooting-star {
+            position: absolute;
+            width: 150px;
+            height: 2px;
+            background: linear-gradient(-45deg, white, transparent);
+            top: 15%;
+            left: -150px;
+            transform: rotate(25deg);
+            animation: shoot 7s linear infinite;
+        }
+
+        @keyframes shoot {
+            0% {
+                left: -150px;
+                top: 15%;
+                opacity: 1;
+            }
+
+            80% {
+                opacity: 1;
+            }
+
+            100% {
+                left: 110%;
+                top: 50%;
+                opacity: 0;
+            }
+        }
+
+        /* Card */
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(12px);
+            padding: 60px 30px 30px 30px;
+            width: 95%;
+            max-width: 650px;
+            text-align: center;
+            border-radius: 25px;
+            box-shadow: 0 0 40px rgba(255, 0, 128, 0.3);
+            z-index: 2;
+            position: relative;
+        }
+
+        /* Button */
+        .kiss-btn {
+            margin-top: 30px;
+            font-size: 18px;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            background: #ff007f;
+            color: white;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 0 20px #ff007f;
+        }
+
+        .kiss-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 50px #ff1493;
+        }
+
+        /* Kiss Image */
+        .kiss-img {
+            width: 200px;
+            height: auto;
+            animation: glow 2s infinite alternate;
+            z-index: 2;
+        }
+
+        @keyframes glow {
+            from {
+                filter: drop-shadow(0 0 10px #ff007f);
+            }
+
+            to {
+                filter: drop-shadow(0 0 30px #ff1493);
+            }
+        }
+
+        /* Glow Circle */
+        .glow-ring {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            margin: 0 auto;
+            /* center horizontally */
+            box-shadow: 0 0 40px #ff007f, 0 0 120px #ff1493;
+            animation: pulse 1.5s infinite;
+            position: relative;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                opacity: 0.8;
+            }
+
+            50% {
+                transform: scale(1.2);
+                opacity: 0.3;
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 0.8;
+            }
+        }
+
+        /* 💋 Floating Kiss Symbols */
+        .kiss-float {
+            position: absolute;
+            bottom: -20px;
+            font-size: 24px;
+            animation: floatUp 8s linear infinite;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0) scale(1);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(-100vh) scale(1.5);
+                opacity: 0;
+            }
+        }
+
+        /* ❤️ Floating Hearts Animation (spiral outward) */
+        @keyframes heartFloat {
+            0% {
+                transform: translate(-50%, -50%) scale(0.8) rotate(0deg);
+                opacity: 0.5;
+            }
+
+            50% {
+                transform: translate(-50%, -180%) scale(1.2) rotate(180deg);
+                opacity: 0.7;
+            }
+
+            100% {
+                transform: translate(-50%, -300%) scale(1) rotate(360deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="shooting-star"></div>
+
+    <div class="card" id="mainCard">
+        <h1>Manu 💖</h1>
+        <h2>Are you excited to see magic ✨</h2>
+        <p>Tap below to receive something special 💕</p>
+        <button class="kiss-btn" onclick="showKiss()">Something Special 💕</button>
+    </div>
+
+    <script>
+        /* ⭐ Stars */
+        for (let i = 0; i < 120; i++) {
+            const star = document.createElement("div");
+            star.classList.add("star");
+            star.style.top = Math.random() * 100 + "vh";
+            star.style.left = Math.random() * 100 + "vw";
+            star.style.animationDuration = (Math.random() * 3 + 2) + "s";
+            document.body.appendChild(star);
+        }
+
+        /* 💋 Floating Kiss Symbols */
+        setInterval(() => {
+            const kiss = document.createElement("div");
+            kiss.classList.add("kiss-float");
+            kiss.innerHTML = "💋";
+            kiss.style.left = Math.random() * 100 + "vw";
+            kiss.style.animationDuration = (Math.random() * 4 + 4) + "s";
+            document.body.appendChild(kiss);
+            setTimeout(() => kiss.remove(), 8000);
+        }, 800);
+
+        /* 💋 Show Kiss Page */
+        function showKiss() {
+            document.getElementById("mainCard").innerHTML = `
+        <!-- Circle + Kiss GIF -->
+        <div style="margin-bottom:40px; position: relative; width: 250px; height: 250px; margin-left:auto; margin-right:auto;">
+            <div class="glow-ring"></div>
+            <img src="kss.gif" class="kiss-img" style="position:absolute; top:50%; left:40%; transform:translate(-50%, -50%);">
+        </div>
+
+        <!-- Text Below Circle -->
+        <div style="text-align:center;">
+            <h2 style="color:#ff99cc;">
+                Every heartbeat whispers your name,<br>
+                every thought brings you closer. 💖
+            </h2>
+
+            <p style="margin-top:20px; font-weight:bold; color:#ffc0dd;">
+                Let this kiss remind you of my endless love.
+            </p>
+
+            <p style="margin-top:30px;">
+                Happy Kiss Day ❤️ <br>
+                Sitaram 💕
+            </p>
+        </div>
+    `;
+
+            // ❤️ Floating hearts around kiss in spiral
+            setInterval(() => {
+                const heart = document.createElement("div");
+                heart.innerHTML = "❤️";
+                heart.style.position = "absolute";
+                heart.style.fontSize = (Math.random() * 30 + 20) + "px";
+                heart.style.left = 50 + Math.random() * 60 - 30 + "%";
+                heart.style.top = 50 + Math.random() * 60 - 30 + "%";
+                heart.style.opacity = 0.3 + Math.random() * 0.5;
+                heart.style.transform = `translate(-50%, -50%) rotate(${Math.random() * 360}deg)`;
+                heart.style.animation = `heartFloat ${(Math.random() * 3 + 3)}s linear forwards`;
+                heart.style.pointerEvents = "none";
+                document.getElementById("mainCard").appendChild(heart);
+
+                setTimeout(() => heart.remove(), 4000);
+            }, 300);
+        }
+    </script>
+
+</body>
+
+</html>
